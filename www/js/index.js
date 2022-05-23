@@ -47,7 +47,7 @@ class escena_personaje extends Phaser.Scene{
             this.logo.setAlpha(this.logoAlpha);
         }
 
-
+        //Set 
 
     }
 
