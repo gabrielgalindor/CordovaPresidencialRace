@@ -3,14 +3,24 @@
 <head>
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <meta name="viewport" content="user-scalable=0, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <style>
         * {
             margin: 0;
             padding: 0;
         }
-        
+        h1{
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        p{
+            font-size: 1.5rem;
+            text-align: center;
+            text-transform: capitalize;
+        }
         #videocont{
             position: fixed;
             top: 0px;
@@ -18,20 +28,163 @@
             height: 320px;
             z-index: 100;
         }
+        
+        .part_character{
+            position: fixed;
+            left: -50px;
+            top: -10px;
+            width: 25rem;
+            height: 25rem;
+            background-position: center;
+            background-size: contain;
+        }
+        #head{
+            z-index: 500;
+            background-image: url("./assets/character/faj_head1.png");
+        }
+        #shoes{
+            z-index: 400;
+            background-image: url("./assets/character/faj_zapatos1.png");
+        }
+        #shirt{
+            z-index: 300;
+            background-image: url("./assets/character/faj_camisa1.png");
+        }
+        #pants{
+            z-index: 200;
+            background-image: url("./assets/character/faj_pantalones1.png");
+        }
+        #body{
+            z-index: 100;
+            background-image: url("./assets/character/faj_body1.png");
+        }
+        .firstbtn{
+            display: inline-block;
+            width: 25rem;
+        }
+
+        .IntoBox{
+            display: inline;
+        }
+
+       .charSelector{
+        margin-top: 10px;
+        margin-bottom: 2px;
+       }
     </style>
     <title>First Game</title>
 </head>
 <body>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="node_modules/phaser/dist/phaser.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/character.js"></script>
+
     <!--
         <video id="videocont" src="assets/intro.mp4" autoplay width="640" height="480"></video>
         cordova build android
         cordova run android
     -->
     
+    <div>
+        <div id="body" class="part_character" src=""> </div>
+        <div id="shirt" class="part_character" src=""> </div>
+        <div id="pants" class="part_character" src=""> </div>
+        <div id="shoes" class="part_character" src=""> </div>
+        <div id="head" class="part_character" src=""> </div>
+      <!--  <div id="shirt" class="part_character" src="http://68.183.137.95/CARP/imgs/faj_camisa1.png">  </div> -->
+    </div>
+    <!--
+    <div class="rightSection">
+        <div class="firstbtn"> 
+            <input onclick="" class="IntoBox btn_personal" type="button" value="<">    
+            <p  class="IntoBox btn_text" > Rostro </p>
+            <input  class="IntoBox btn_personal"  type="button" value=">">
+        </div>
+        <div class="firstbtn"> 
+            <input class="IntoBox btn_personal" type="button" value="<">    
+            <p  class="IntoBox btn_text" > Piel </p>
+            <input  class="IntoBox btn_personal"  type="button" value=">">
+        </div>
+        <div class="firstbtn"> 
+            <input class="IntoBox btn_personal" onclick="shirtChange('-')" type="button" value="<">    
+            <p  class="IntoBox btn_text" > Camisa </p>
+            <input  class="IntoBox btn_personal" onclick="shirtChange('+')"  type="button" value=">">
+        </div>
+        <div class="firstbtn"> 
+            <input class="IntoBox btn_personal" type="button" value="<">    
+            <p  class="IntoBox btn_text" > Pantalones </p>
+            <input  class="IntoBox btn_personal"  type="button" value=">">
+        </div>
+        <div class="firstbtn"> 
+            <input class="IntoBox btn_personal" type="button" value="<">    
+            <p  class="IntoBox btn_text" > Zapatos </p>
+            <input  class="IntoBox btn_personal"  type="button" value=">">
+        </div>
+    </div>
+    -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6">
+                <h1> Selecciona a tu personaje </h1>
+            </div>
+        </div>
+        <div class="row charSelector">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-3">
+                <p> Camisa </p>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-secondary"  onclick="shirtChange('+')">+</button>
+                <button type="button" class="btn btn-secondary"  onclick="shirtChange('-')">-</button>
+            </div>
+        </div>
+        <div class="row charSelector">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-3">
+                <p> Pantalon </p>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-secondary"  onclick="shirtChange('+')">+</button>
+                <button type="button" class="btn btn-secondary"  onclick="shirtChange('-')">-</button>
+            </div>
+        </div>
+        <div class="row charSelector">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-3">
+                <p> Zapatos </p>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-secondary"  onclick="shirtChange('+')">+</button>
+                <button type="button" class="btn btn-secondary"  onclick="shirtChange('-')">-</button>
+            </div>
+        </div>
+        <div class="row charSelector">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-3">
+                <p> accesorios </p>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-secondary"  onclick="shirtChange('+')">+</button>
+                <button type="button" class="btn btn-secondary"  onclick="shirtChange('-')">-</button>
+            </div>
+        </div>
+    </div>
     
-    <div id="gameDiv"></div>
+
+    
+
 </body>
 </html>

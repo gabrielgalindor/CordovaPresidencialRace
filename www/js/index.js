@@ -119,7 +119,7 @@ class escena_personaje extends Phaser.Scene{
     // var rightbtn;
 
 
-    var game = new Phaser.Game(config);
+    // var game = new Phaser.Game(config);
 
    
     

@@ -8,8 +8,7 @@ document.addEventListener('deviceready', function() {
     const centerh = fheight/2;
     const centerhroad = centerh - 100;
 
-    const api_url = "http://0.0.0.0:8000/api"
-
+    const api_url = "http://157.245.142.69:8000/api"
 
     const  get_msbot_api = async (BODY, KEY)=>{
     
@@ -36,7 +35,6 @@ document.addEventListener('deviceready', function() {
     
     }
 
-
 class escena_personaje extends Phaser.Scene{
     constructor(){
         super({key:"escena_personaje", active:true});
@@ -44,21 +42,16 @@ class escena_personaje extends Phaser.Scene{
     }
 
     preload () {
-        this.new_load = false
+        this.load.image('background', './assets/intro/background.jpg');
+        this.new_load = false;
+        
     }
 
     create () {
-        //Me quede acá
-        //Recordar referenciar con el promise de la camisa
-        //Va orden body, head, camisa, pantalon, zapatos, accesorio
-        this.promise_body = get_msbot_api(
-            {
-                "collection": "faj",
-                "part": "camisa",
-                "variation": 1
-            },
-            'img_url'
-        )
+        // window.addEventListener('resize', resize);
+        // resize();
+        this.background = this.add.tileSprite(centerw,centerh,game.config.width,game.config.height,'background');
+        
 
         this.promise_camisa = get_msbot_api(
             {
@@ -68,34 +61,26 @@ class escena_personaje extends Phaser.Scene{
             },
             'img_url'
         );
-        
+
         this.promise_camisa.then(
-           (data)=>{
-            this.final_camisa = data;
-            
-            this.new_load = true;
-           }
-        )
-        
-        
+            (data)=>{
+             this.final_camisa = data;
+             
+             this.new_load = true;
+            }
+         );
+
+
     }
 
     update () {
-        if(this.new_load)
-        {
-            this.reload_images();
-            this.new_load= false;
-        }
+        this.background.tilePositionY += 0.5;
+
+       
+        
 
 
     }
-
-    reload_images()
-    {
-        //this.scene.start('draw_character', {img_camisa: this.final_camisa});
-        console.log("Buenas");   
-    }
-
 
 
 
@@ -134,7 +119,7 @@ class escena_personaje extends Phaser.Scene{
     // var rightbtn;
 
 
-    var game = new Phaser.Game(config);
+    // var game = new Phaser.Game(config);
 
    
     

@@ -1,4 +1,10 @@
-#Commands 
+# Create project
+
+>
+> cordova create <project-name>
+>
+
+# Commands 
 
 >
 >  npm install phaser@3.54
